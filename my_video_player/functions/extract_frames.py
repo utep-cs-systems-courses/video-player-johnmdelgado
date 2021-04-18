@@ -56,9 +56,10 @@ def extractFrames(threadName, queue):
     while success and count < 72:
 
         # write the current frame out as a jpeg image
-        cv2.imwrite(f"{outputDir}/frame_{count:04d}.bmp", frame)
+        output_file = f"{outputDir}/frame_{count:04d}.bmp", frame
+        cv2.imwrite(output_file)
         print("Adding frame to the queue to be consumed")
-        queue.put(frame)
+        queue.put(output_file)
 
     success, frame = vidcap.read()
     print(f'Reading frame {count}')

@@ -10,6 +10,7 @@ This is the main executeable file for the server
 """
 from functions import get_config as gc
 from functions import extract_frames as ef
+from functions import convert_to_grayscale as gs
 from os import write
 import sys
 import os
@@ -29,16 +30,24 @@ if __name__ == '__main__':
 
     # initialize queue
     work_queue = queue.Queue(buffer_size)
+    converted_queue = queue.Queue(buffer_size)
 
     # initialize thread counters
     producer_thread_counter = 1
+    consumer_thread_counter = 1
 
     # while 1:
-    print("Starting Producer Thread")
+    print("Starting Frame Producer Thread")
     thread_name = "Producer-thread-{}".format(producer_thread_counter)
     frame_producer_thread = ef.FrameProducerThread(
         producer_thread_counter, thread_name, work_queue)
     frame_producer_thread.start()
+
+    print("Starting Frame Consumer Thread")
+    thread_name = "Frame-consumer-thread-{}".format(consumer_thread_counter)
+    frame_consumer_thread = gs.FrameConsumerThread(
+        producer_thread_counter, thread_name, work_queue, converted_queue)
+    frame_consumer_thread.start()
 
     # wait for the queue to empty
     # while not work_queue.empty():
