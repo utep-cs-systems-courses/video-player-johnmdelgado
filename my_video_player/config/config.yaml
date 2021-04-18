@@ -1,0 +1,17 @@
+defaults:
+  outputFramesDirectory: "./data/frames"
+  clipFilePath: "../data/video/clip.mp4"
+  clipFileName: "clip.mp4"
+
+bufferSettings:
+  size: 10
+
+serverDefaults:
+  listenPort: 50001
+  listenAddress: ''       # Symbolic name meaning all available interfaces
+  usage: False
+  downloadFilePath: "./data/received_files/"
+  no_of_threads: 2
+
+debugging:
+  debug: True
