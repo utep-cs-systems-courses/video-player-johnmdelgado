@@ -56,8 +56,8 @@ def extractFrames(threadName, queue):
     while success and count < 72:
 
         # write the current frame out as a jpeg image
-        output_file = f"{outputDir}/frame_{count:04d}.bmp", frame
-        cv2.imwrite(output_file)
+        output_file = f"{outputDir}/frame_{count:04d}.bmp"
+        cv2.imwrite(output_file, frame)
         print("Adding frame to the queue to be consumed")
         queue.put(output_file)
 
