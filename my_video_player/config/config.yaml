@@ -1,6 +1,6 @@
 defaults:
   outputFramesDirectory: "./data/frames"
-  clipFilePath: "../data/video/clip.mp4"
+  clipFilePath: "./data/video/clip.mp4"
   clipFileName: "clip.mp4"
 
 bufferSettings:
