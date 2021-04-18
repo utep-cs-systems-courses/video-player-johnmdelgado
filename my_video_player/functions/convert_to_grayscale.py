@@ -59,7 +59,7 @@ def ConvertToGrayscale(threadName, workQueue, convertedQueue):
         cv2.imwrite(out_file_name, grayscale_frame)
 
         # add file to the converted queue to be consumed by the next extract processor
-        convertedQueue.add(out_file_name)
+        convertedQueue.put(out_file_name)
 
         count += 1
 
