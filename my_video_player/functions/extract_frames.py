@@ -40,12 +40,6 @@ def extractFrames(threadName, queue):
     print("opening the video clip from: {}".format(clipFilePath))
     # open the video clip
     vidcap = cv2.VideoCapture(clipFilePath)
-    while(vidcap.isOpened()):
-        ret, frame = vidcap.read()
-
-        cv2.imshow('frame', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
 
     # create the output directory if it doesn't exist
     if not os.path.exists(outputDir):
