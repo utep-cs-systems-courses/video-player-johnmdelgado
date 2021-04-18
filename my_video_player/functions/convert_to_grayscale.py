@@ -44,6 +44,7 @@ def ConvertToGrayscale(threadName, workQueue, convertedQueue):
     print("Converting file: {} to grayscale".format(in_file_name))
     # load the next file
     inputFrame = cv2.imread(in_file_name, cv2.IMREAD_COLOR)
+    print(inputFrame)
 
     while inputFrame is not None and count < 72:
         print(f'Converting frame {count}')

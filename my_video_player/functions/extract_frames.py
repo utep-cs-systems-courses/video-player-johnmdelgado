@@ -60,7 +60,6 @@ def extractFrames(threadName, queue):
         cv2.imwrite(output_file, frame)
         print("Adding frame to the queue to be consumed")
         queue.put(output_file)
-
-    success, frame = vidcap.read()
-    print(f'Reading frame {count}')
-    count += 1
+        success, frame = vidcap.read()
+        print(f'Reading frame {count}')
+        count += 1
