@@ -46,11 +46,11 @@ def extractFrames(threadName, queue):
         print(f"Output directory {outputDir} didn't exist, creating")
         os.makedirs(outputDir)
 
-    print("reading frame")
+    print("{}: reading frame".format(threadName))
     # read one frame
     success, frame = vidcap.read()
-    print("success is: {}".format(success))
-    print("frame is: {}".format(frame))
+    print("{}: success is: {}".format(threadName, success))
+    print("{}: frame is: {}".format(threadName, frame))
 
     print(f'Reading frame {count} {success}')
     while success and count < 72:
@@ -58,8 +58,8 @@ def extractFrames(threadName, queue):
         # write the current frame out as a jpeg image
         output_file = f"{outputDir}/frame_{count:04d}.bmp"
         cv2.imwrite(output_file, frame)
-        print("Adding frame to the queue to be consumed")
+        print("{}: Adding frame to the queue to be consumed".format(threadName))
         queue.put(output_file)
         success, frame = vidcap.read()
-        print(f'Reading frame {count}')
+        print("{}: Reading frame {}".format(threadName, count))
         count += 1

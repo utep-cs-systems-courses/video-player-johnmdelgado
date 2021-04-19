@@ -53,7 +53,7 @@ def displayFrames(threadName, grayscaleQueue):
 
     while frame is not None:
 
-        print(f'Displaying frame {count}')
+        print(f'{threadName}: Displaying frame {count}')
         # Display the frame in a window called "Video"
         cv2.imshow('Video', frame)
 

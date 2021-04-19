@@ -41,20 +41,21 @@ def ConvertToGrayscale(threadName, workQueue, convertedQueue):
     in_file_name = workQueue.get()
     #inFileName = f'{outputDir}/frame_{count:04d}.bmp'
 
-    print("Converting file: {} to grayscale".format(in_file_name))
+    print("{}: Converting file: {} to grayscale".format(threadName, in_file_name))
     # load the next file
     inputFrame = cv2.imread(in_file_name, cv2.IMREAD_COLOR)
     print(inputFrame)
 
     while inputFrame is not None and count < 72:
-        print(f'Converting frame {count}')
+        print("{}: Converting frame {}".format(threadName, count))
 
         # convert the image to grayscale
         grayscale_frame = cv2.cvtColor(inputFrame, cv2.COLOR_BGR2GRAY)
 
         # generate output file name
         out_file_name = f'{outputDir}/grayscale_{count:04d}.bmp'
-        print("writing grayscale file and pushing to converted queue")
+        print(
+            "{}: writing grayscale file and pushing to converted queue".format(threadName))
         # write output file
         cv2.imwrite(out_file_name, grayscale_frame)
 
