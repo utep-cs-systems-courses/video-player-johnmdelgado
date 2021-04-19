@@ -6,12 +6,8 @@ defaults:
 bufferSettings:
   size: 10
 
-serverDefaults:
-  listenPort: 50001
-  listenAddress: ''       # Symbolic name meaning all available interfaces
-  usage: False
-  downloadFilePath: "./data/received_files/"
-  no_of_threads: 2
+playback:
+  frameDelay: 42
 
 debugging:
   debug: True

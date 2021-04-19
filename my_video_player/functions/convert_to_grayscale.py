@@ -64,7 +64,7 @@ def ConvertToGrayscale(threadName, workQueue, convertedQueue):
         count += 1
 
         # generate input file name for the next frame
-        in_file_name = f'{outputDir}/frame_{count:04d}.bmp'
+        in_file_name = workQueue.get()
 
         # load the next frame
         inputFrame = cv2.imread(in_file_name, cv2.IMREAD_COLOR)

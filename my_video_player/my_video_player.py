@@ -11,6 +11,7 @@ This is the main executeable file for the server
 from functions import get_config as gc
 from functions import extract_frames as ef
 from functions import convert_to_grayscale as gs
+from functions import display_frames as df
 from os import write
 import sys
 import os
@@ -48,6 +49,13 @@ if __name__ == '__main__':
     frame_consumer_thread = gs.FrameConsumerThread(
         producer_thread_counter, thread_name, work_queue, converted_queue)
     frame_consumer_thread.start()
+
+    print("Starting grayscale Frame Consumer Thread")
+    thread_name = "Grayscale-Frame-consumer-thread-{}".format(
+        consumer_thread_counter)
+    grayscale_frame_consumer_thread = df.GrayscaleFrameConsumerThread(
+        producer_thread_counter, thread_name, converted_queue)
+    grayscale_frame_consumer_thread.start()
 
     # wait for the queue to empty
     # while not work_queue.empty():
