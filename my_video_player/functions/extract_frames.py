@@ -50,7 +50,6 @@ def extractFrames(threadName, queue):
     # read one frame
     success, frame = vidcap.read()
     print("{}: success is: {}".format(threadName, success))
-    print("{}: frame is: {}".format(threadName, frame))
 
     print(f'Reading frame {count} {success}')
     while success and count < 72:
