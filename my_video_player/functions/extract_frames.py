@@ -52,7 +52,7 @@ def extractFrames(threadName, queue):
     print("{}: success is: {}".format(threadName, success))
 
     print(f'Reading frame {count} {success}')
-    while success and count < 72:
+    while success:  # and count < 72:
 
         # write the current frame out as a jpeg image
         output_file = f"{outputDir}/frame_{count:04d}.bmp"
