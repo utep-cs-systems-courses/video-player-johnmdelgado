@@ -25,7 +25,7 @@ class GrayscaleFrameConsumerThread(threading.Thread):
 
     def run(self):
         print("Starting " + self.name)
-        if not self.convertedQueue.full():
+        if not self.grayscaleQueue.full():
             print("Queue is not full, Extracting frames to be displayed.")
             displayFrames(self.name, self.grayscaleQueue)
         else:
