@@ -17,12 +17,7 @@ class FrameProducerThread(threading.Thread):
 
     def run(self):
         print("Starting " + self.name)
-        if not self.queue.full():
-            print("Queue is not full, Extracting frames to be consumed.")
-            extractFrames(self.name, self.queue)
-        else:
-            print("Queue is full. Sleeping for a 2 seconds")
-            time.sleep(2)
+        extractFrames(self.name, self.queue)
         return
 
 

@@ -19,12 +19,7 @@ class FrameConsumerThread(threading.Thread):
 
     def run(self):
         print("Starting " + self.name)
-        if not self.convertedQueue.full():
-            print("Queue is not full, Extracting frames to be consumed.")
-            ConvertToGrayscale(self.name, self.workQueue, self.convertedQueue)
-        else:
-            print("Queue is full. Sleeping for a 2 seconds")
-            time.sleep(2)
+        ConvertToGrayscale(self.name, self.workQueue, self.convertedQueue)
         return
 
 
