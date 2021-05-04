@@ -12,6 +12,7 @@ from functions import get_config as gc
 from functions import extract_frames as ef
 from functions import convert_to_grayscale as gs
 from functions import display_frames as df
+from functions import custom_queue as cq
 from os import write
 import sys
 import os
@@ -30,8 +31,8 @@ if __name__ == '__main__':
     buffer_size = config["bufferSettings"]["size"]
 
     # initialize queue
-    work_queue = queue.Queue(buffer_size)
-    converted_queue = queue.Queue(buffer_size)
+    work_queue = cq.CustomQueue()
+    converted_queue = cq.CustomQueue()
 
     # initialize thread counters
     producer_thread_counter = 1
